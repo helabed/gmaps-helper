@@ -1,0 +1,10 @@
+
+
+Processing Rails::InfoController#properties (for 127.0.0.1 at 2008-12-25 04:20:49) [GET]
+  Session ID: be0f741433962ab484ea6dfb0b0b60f7
+  Parameters: {"action"=>"properties", "controller"=>"rails/info"}
+  [4;36;1mSQL (0.000956)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+Completed in 0.16756 (5 reqs/sec) | Rendering: 0.00203 (1%) | DB: 0.00096 (0%) | 200 OK [http://localhost/rails/info/properties]
