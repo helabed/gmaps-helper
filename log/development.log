@@ -8,3 +8,14 @@ Processing Rails::InfoController#properties (for 127.0.0.1 at 2008-12-25 04:20:4
  WHERE type = 'table' AND NOT name = 'sqlite_sequence'
 [0m
 Completed in 0.16756 (5 reqs/sec) | Rendering: 0.00203 (1%) | DB: 0.00096 (0%) | 200 OK [http://localhost/rails/info/properties]
+
+
+Processing Rails::InfoController#properties (for 127.0.0.1 at 2008-12-26 00:58:08) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--77bc1d82abd63976faa1ef7131a139aca56611ff
+  Parameters: {"action"=>"properties", "controller"=>"rails/info"}
+  [4;36;1mSQL (0.001116)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+Completed in 0.22196 (4 reqs/sec) | Rendering: 0.00231 (1%) | DB: 0.00112 (0%) | 200 OK [http://localhost/rails/info/properties]
