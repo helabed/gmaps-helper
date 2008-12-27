@@ -322,18 +322,10 @@
       
       function lookupCity(){
           var cityBean = getCityBean();
-          //var query = "city-ws-proxy.jsp";
-          //query += "?city=" + cityBean.city;
-          //query += "&state=" + cityBean.state;
           
-          //var query = "api.local.yahoo.com/MapsService/V1/geocode?appid=mapmap.org";
-          //query += "&city=" + cityBean.city;
-          //query += "&state=" + cityBean.state;
-          
-          // format should be like this Denver,CO,US
+          // format should be like this city=Denver,CO,US or city=london,UK or city=cairo,EG
           var query = "/map/locate_city_by_name_and_state";
           query += "?city=" + cityBean.city;
-          //query += "," + cityBean.state + ",US";
           
           var request = GXmlHttp.create();
           request.open("GET", query, true);
@@ -355,22 +347,21 @@
               }
               else 
               if (request.readyState == 4) {
-//                  errorOut("readyState 4 = complete, status=" + request.status +
-//                  	" (" + request.statusText + ")" );
 					
                   if (request.status == 200) {
 				  	  
                       var responseDoc = request.responseXML;
                       var root = responseDoc.documentElement;
-					  if( root == null ){
-					  	root = responseDoc.firstChild;
-					  }
-                      //var latitudeNode = root.getElementsByTagName("Latitude")[0];
+                      
+                      if (root == null) {
+                          root = responseDoc.firstChild;
+                      }
                       var latitudeNode = root.getElementsByTagName("geo:lat")[0];
                       cityBean.latitude = GXml.value(latitudeNode);
-                      //var longitudeNode = root.getElementsByTagName("Longitude")[0];
+
                       var longitudeNode = root.getElementsByTagName("geo:long")[0];
                       cityBean.longitude = GXml.value(longitudeNode);
+
                       populateForm(cityBean);
                   }
               }
