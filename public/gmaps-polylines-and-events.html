@@ -1,0 +1,375 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <script src="http://maps.google.com/maps?file=api&v=2&key=ABQIAAAATJL7OHV_fwFFKPDFWt53ChT2yXp_ZAY8_ufC3CFXhHIE1NvwkxRp-K-fE-a41fLoOHyfZY85x2fgCA" type="text/javascript">
+    </script>
+    <script type="text/javascript">
+      var map = null;
+      var usCenterPoint = new GPoint(-98.583333, 39.833333);
+      
+      //resetMap
+      var initialCenterPoint = usCenterPoint;
+      var initialZoomLevel = 13;
+      var initialMapType = G_HYBRID_MAP;
+      
+      //cycleZoomCycle
+      var zoomCycle = 1;
+      var lmc = new GLargeMapControl();
+      var smc = new GSmallMapControl();
+      var szc = new GSmallZoomControl();
+      
+      //toggleMapTypeControl
+      var mapControlCycle = 1;
+      var mtc = new GMapTypeControl();
+      
+      //toggleMapType
+      var mapTypeCycle = 1;
+      var mapTypes = new Array(3);
+      mapTypes[0] = G_NORMAL_MAP;
+      mapTypes[1] = G_SATELLITE_MAP;
+      mapTypes[2] = G_HYBRID_MAP;
+      //note: this is array was created for readability sake
+      // the built-in function map.getMapTypes() returns the same array
+      
+      //cycleGoogle
+      var googleCycle = 0;
+      var googlePoint = new GPoint(-122.084820, 37.423071);
+      var googleMarker = new GMarker(googlePoint);
+      
+      var icon = new GIcon();
+      icon.image = "http://www.mapmap.org/googlemaps/google.png";
+      icon.iconSize = new GSize(16, 16);
+      icon.iconAnchor = new GPoint(8, 8);
+      icon.shadow = "http://www.mapmap.org/googlemaps/google_shadow.png";
+      icon.shadowSize = new GSize(32, 16);
+      icon.infoWindowAnchor = new GPoint(8, 0);
+      var googleFancyMarker = new GMarker(googlePoint, icon);
+      
+      //googleInfoWindow
+      var infoWindowCycle = 0;
+      
+      //polylines
+      var linesCycle = 0;
+      var denver = new GPoint(-104.99218, 39.74006);
+      var santaFe = new GPoint(-105.93776, 35.69150);
+      var lasVegas = new GPoint(-115.13980, 36.17178);
+      var sanFrancisco = new GPoint(-122.41995, 37.77918);
+      var saltLakeCity = new GPoint(-111.88829, 40.75955);
+      var portland = new GPoint(-122.67555, 45.51184);
+      var seattle = new GPoint(-122.32958, 47.60341);
+      
+      
+      // pushpins
+      // events
+      var pushpinsCycle = 0;
+      var clickListener;
+      var clickListener2;
+    </script>
+  </head>
+  <body onLoad="initMap()">
+  	<input type="button" name="Refresh" value="Get Map Info" onClick="getMapInfo()"/>
+	<input type="button" name="Reset" value="Reset Map" onClick="resetMap()"/>
+	<input type="button" name="Toggle Dragging" value="Toggle Dragging" onClick="toggleDragging()"/>
+	<input type="button" name="Cycle Zoom Control" value="Cycle Zoom Control" onClick="cycleZoomControl()"/>
+	<input type="button" name="Toggle MapType Control" value="Toggle MapType Control" onClick="toggleMapTypeControl()"/>
+	<input type="button" name="Cycle Map Type" value="Cycle Map Type" onClick="cycleMapType()"/>
+	<input type="button" name="Cycle Google Marker" value="Cycle Google Marker" onClick="cycleGoogle()"/>
+	<input type="button" name="Cycle Info Window" value="Cycle Info Window" onClick="cycleInfoWindow()"/>
+	<input type="button" name="Zoom To Google" value="Zoom To Google" onClick="zoomToGoogle()"/>
+	<input type="button" name="Cycle Lines" value="Cycle Lines" onClick="cycleLines()"/>
+	<input type="button" name="Cycle Pushpins" value="Cycle Pushpins" onClick="cyclePushpins()"/>
+    <div id="mapInfo">
+      Map Info:
+    </div>
+    <div id="map" style="width: 800px; height: 500px">
+    </div>
+    <script type="text/javascript">
+      function initMap(){
+          map = new GMap(document.getElementById("map"));
+          map.addControl(new GOverviewMapControl());
+          // an alternative way of positioning objects with map.addControl()
+          // GSize discribes the width,height of the inivisble box containing
+          // the object. Options for GControlPosition are:
+          // G_ANCHOR_BOTTOM_LEFT, G_ANCHOR_BOTTOM_RIGHT, G_ANCHOR_TOP_LEFT
+          // G_ANCHOR_TOP_RIGHT
+          map.addControl(new GScaleControl(), new GControlPosition(G_ANCHOR_BOTTOM_LEFT, new GSize(20, 40)));
+          
+          map.addControl(lmc);
+          map.addControl(mtc);
+          resetMap();
+      }
+      
+      function getMapInfo(){
+          var output = "<b>Map Info:</b><br />";
+          output = output + "getZoomLevel:[" + map.getZoomLevel() + "]<br />";
+          output = output + "getCenterLatLng:[" + map.getCenterLatLng() + "]<br />";
+          output = output + "getBoundsLatLng:[" + map.getBoundsLatLng() + "]<br />";
+          output = output + "draggingEnabled:[" + map.draggingEnabled() + "]<br />";
+          output = output + "Current MapType:[" + getCurrentMapTypeName() + "]<br />";
+          
+          mapInfo = document.getElementById("mapInfo");
+          mapInfo.innerHTML = output;
+      }
+      
+      function resetMap(){
+          map.centerAndZoom(initialCenterPoint, initialZoomLevel);
+          map.setMapType(initialMapType);
+          
+          //update display
+          getMapInfo();
+      }
+      
+      function toggleDragging(){
+          if (map.draggingEnabled()) {
+              map.disableDragging();
+          }
+          else {
+              map.enableDragging();
+          }
+          
+          //update display
+          getMapInfo();
+      }
+      
+      function cycleZoomControl(){
+          //remove all controls from map
+          map.removeControl(lmc);
+          map.removeControl(smc);
+          map.removeControl(szc);
+          
+          switch (zoomCycle) {
+              //GLargeMapControl
+              case 0:
+                  map.addControl(lmc);
+                  zoomCycle++;
+                  break;
+                  
+              //GSmallMapControl
+              case 1:
+                  map.addControl(smc);
+                  zoomCycle++;
+                  break;
+                  
+              //GSmallZoomControl
+              case 2:
+                  map.addControl(szc);
+                  zoomCycle++;
+                  break;
+                  
+              //none
+              case 3:
+                  zoomCycle = 0;
+                  break;
+          }
+      }
+      
+      function toggleMapTypeControl(){
+          //remove all controls from map
+          map.removeControl(mtc);
+          
+          switch (mapControlCycle) {
+              //GMapTypeControl
+              case 0:
+                  map.addControl(mtc);
+                  mapControlCycle++;
+                  break;
+                  
+              //none
+              case 1:
+                  mapControlCycle = 0;
+                  break;
+          }
+      }
+      
+      function cycleMapType(){
+          map.setMapType(mapTypes[mapTypeCycle]);
+          mapTypeCycle++;
+          if (mapTypeCycle >= mapTypes.length) {
+              mapTypeCycle = 0;
+          }
+          
+          //update display
+          getMapInfo();
+      }
+      
+      function getCurrentMapTypeName(){
+          var types = map.getMapTypes();
+          var curr = map.getCurrentMapType();
+          var name = "unknown";
+          
+          if (curr == types[0]) {
+              name = "Map";
+          }
+          else 
+              if (curr == types[1]) {
+                  name = "Satellite";
+              }
+              else 
+                  if (curr == types[2]) {
+                      name = "Hybrid";
+                  }
+          
+          return name;
+      }
+      
+      function cycleGoogle(){
+          //remove all googleMarkers from map
+          map.removeOverlay(googleMarker);
+          map.removeOverlay(googleFancyMarker);
+          //slash and burn method to remove all markers -- map.clearOverlays()
+          
+          switch (googleCycle) {
+              //regular GMarker
+              case 0:
+                  map.addOverlay(googleMarker);
+                  googleCycle++;
+                  break;
+                  
+              //custom GMarker
+              case 1:
+                  map.addOverlay(googleFancyMarker);
+                  googleCycle++;
+                  break;
+                  
+              //none
+              case 2:
+                  googleCycle = 0;
+                  break;
+          }
+      }
+      
+      function zoomToGoogle(){
+          map.centerAndZoom(googlePoint, 0);
+          map.setMapType(map.getMapTypes()[2]); //hybrid type
+          //update display
+          getMapInfo();
+      }
+      
+      function cycleInfoWindow(){
+          //remove Info Window from map
+          map.clearOverlays();
+          map.closeInfoWindow();
+          
+          switch (infoWindowCycle) {
+              //IW on a marker
+              case 0:
+                  var googleText = '<a href="http://www.google.com">Google</a> headquarters.';
+                  map.addOverlay(googleMarker);
+                  googleMarker.openInfoWindowHtml(googleText);
+                  infoWindowCycle++;
+                  break;
+                  
+              //IW on the map (no marker)
+              case 1:
+                  var center = map.getCenterLatLng();
+                  var coords = "Center point: (" + center.x + "," + center.y + ")";
+                  map.openInfoWindowHtml(center, coords);
+                  infoWindowCycle++;
+                  break;
+                  
+              //IW on a marker showing a map instead of text
+              case 2:
+                  map.addOverlay(googleMarker);
+                  googleMarker.showMapBlowup(3, G_SATELLITE_MAP);
+                  infoWindowCycle++;
+                  break;
+                  
+              //none
+              case 3:
+                  infoWindowCycle = 0;
+                  break;
+          }
+      }
+      
+      
+      function cycleLines(){
+          map.clearOverlays()
+          
+          switch (linesCycle) {
+              //add plain line
+              case 0:
+                  var myPoints = new Array(denver, santaFe, lasVegas, sanFrancisco);
+                  var myLine = new GPolyline(myPoints);
+                  map.addOverlay(myLine);
+                  linesCycle++;
+                  break;
+                  
+              //add fancypants line
+              case 1:
+                  var myFancyPoints = new Array(denver, saltLakeCity, portland, seattle);
+                  var myFancyLine = new GPolyline(myFancyPoints, "#FF0000", 10, 0.5);
+                  map.addOverlay(myFancyLine);
+                  linesCycle++;
+                  break;
+                  
+              //none
+              case 2:
+                  linesCycle = 0;
+                  break;
+          }
+      }
+      
+      
+      
+      function cyclePushpins(){
+          switch (pushpinsCycle) {
+              //turn on event listener
+              case 0:
+                  pushpinsCycle++;
+                  clickListener = GEvent.addListener(map, "click", function(overlay, point){
+                      pushpin(overlay, point);
+                  });
+                  document.getElementById("mapInfo").innerHTML = "Click anywhere on the map to display a pushpin.";
+                  break;
+                  
+              //turn on another event listener
+              case 1:
+                  pushpinsCycle++;
+                  clickListener2 = GEvent.addListener(map, "click", function(overlay, point){
+                      showCoords(overlay, point);
+                  });
+                  document.getElementById("mapInfo").innerHTML = "Click anywhere on the map to display a pushpin " +
+                  "<b><i>with coordinates</i></b>.";
+                  break;
+                  
+              //turn off event listener
+              case 2:
+                  pushpinsCycle = 0;
+                  GEvent.removeListener(clickListener);
+                  GEvent.removeListener(clickListener2);
+                  
+                  map.clearOverlays();
+                  document.getElementById("mapInfo").innerHTML = "All click listeners have been removed.";
+                  break;
+          }
+      }
+      
+      // A GEvents is similar to a GMarker. If you add it to the map, you have to provide the
+      // coordinates(i.e a point), if you add it to a GMarker, the point is implicit. The
+      // same idea applies to GEvents: if you register a click listener on the
+      // map, the listener passes back the overlay( a GMarker for example ) if that one is 
+      // clicked or passes back a point with an 'overlay' param of null in the event call-back 
+      // method(pushpin() in here ). This is used here to decide if the user clicked on a GMarker
+      // or on Empty space on the map. If on marker, remove it, other wise add a new GMarker
+      // using the provided 'point' coordinates.
+      function pushpin(overlay, point){
+          if (overlay) {
+              map.removeOverlay(overlay);
+          }
+          else 
+              if (point) {
+                  map.addOverlay(new GMarker(point));
+              }
+      }
+      
+      
+      function showCoords(overlay, point){
+          var output = "";
+          if (point) {
+              output += "(" + point.toUrlValue() + ")";
+          }
+          document.getElementById("mapInfo").innerHTML = output;
+      }
+    </script>
+  </body>
+</html>

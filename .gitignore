@@ -1,6 +1,8 @@
-./log/*.log
-./tmp/cache/*
-./tmp/pids/*
-./tmp/sessions/*
-./tmp/sockets/*
-./config/database.yml
+log/*.log
+tmp/cache/*
+tmp/pids/*
+tmp/sessions/*
+tmp/sockets/*
+config/database.yml
+.loadpath
+.project
