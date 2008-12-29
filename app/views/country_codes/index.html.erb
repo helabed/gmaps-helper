@@ -1,0 +1,22 @@
+<h1>Listing country_codes</h1>
+
+<table>
+  <tr>
+    <th>Code</th>
+    <th>Name</th>
+  </tr>
+
+<% for country_code in @country_codes %>
+  <tr>
+    <td><%=h country_code.code %></td>
+    <td><%=h country_code.name %></td>
+    <td><%= link_to 'Show', country_code %></td>
+    <td><%= link_to 'Edit', edit_country_code_path(country_code) %></td>
+    <td><%= link_to 'Destroy', country_code, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New country_code', new_country_code_path %>

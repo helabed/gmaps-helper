@@ -1,0 +1,13 @@
+<p>
+  <b>Code:</b>
+  <%=h @country_code.code %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%=h @country_code.name %>
+</p>
+
+
+<%= link_to 'Edit', edit_country_code_path(@country_code) %> |
+<%= link_to 'Back', country_codes_path %>

@@ -1,0 +1,33 @@
+<p>
+  <b>Country:</b>
+  <%=h @city_global_location.country %>
+</p>
+
+<p>
+  <b>City:</b>
+  <%=h @city_global_location.city %>
+</p>
+
+<p>
+  <b>Accent city:</b>
+  <%=h @city_global_location.accent_city %>
+</p>
+
+<p>
+  <b>Population:</b>
+  <%=h @city_global_location.population %>
+</p>
+
+<p>
+  <b>Latitude:</b>
+  <%=h @city_global_location.latitude %>
+</p>
+
+<p>
+  <b>Longitude:</b>
+  <%=h @city_global_location.longitude %>
+</p>
+
+
+<%= link_to 'Edit', edit_city_global_location_path(@city_global_location) %> |
+<%= link_to 'Back', city_global_locations_path %>

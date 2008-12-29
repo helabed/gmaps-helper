@@ -1,0 +1,2 @@
+module CityGlobalLocationsHelper
+end

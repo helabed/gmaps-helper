@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  country: MyString
+  city: MyString
+  accent_city: MyString
+  population: 1
+  latitude: 9.99
+  longitude: 9.99
+
+two:
+  country: MyString
+  city: MyString
+  accent_city: MyString
+  population: 1
+  latitude: 9.99
+  longitude: 9.99

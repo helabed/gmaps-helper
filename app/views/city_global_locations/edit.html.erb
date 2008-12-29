@@ -1,0 +1,36 @@
+<h1>Editing city_global_location</h1>
+
+<% form_for(@city_global_location) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :country %><br />
+    <%= f.text_field :country %>
+  </p>
+  <p>
+    <%= f.label :city %><br />
+    <%= f.text_field :city %>
+  </p>
+  <p>
+    <%= f.label :accent_city %><br />
+    <%= f.text_field :accent_city %>
+  </p>
+  <p>
+    <%= f.label :population %><br />
+    <%= f.text_field :population %>
+  </p>
+  <p>
+    <%= f.label :latitude %><br />
+    <%= f.text_field :latitude %>
+  </p>
+  <p>
+    <%= f.label :longitude %><br />
+    <%= f.text_field :longitude %>
+  </p>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @city_global_location %> |
+<%= link_to 'Back', city_global_locations_path %>

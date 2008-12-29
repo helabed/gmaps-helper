@@ -1,0 +1,30 @@
+<h1>Listing city_global_locations</h1>
+
+<table>
+  <tr>
+    <th>Country</th>
+    <th>City</th>
+    <th>Accent city</th>
+    <th>Population</th>
+    <th>Latitude</th>
+    <th>Longitude</th>
+  </tr>
+
+<% for city_global_location in @city_global_locations %>
+  <tr>
+    <td><%=h city_global_location.country %></td>
+    <td><%=h city_global_location.city %></td>
+    <td><%=h city_global_location.accent_city %></td>
+    <td><%=h city_global_location.population %></td>
+    <td><%=h city_global_location.latitude %></td>
+    <td><%=h city_global_location.longitude %></td>
+    <td><%= link_to 'Show', city_global_location %></td>
+    <td><%= link_to 'Edit', edit_city_global_location_path(city_global_location) %></td>
+    <td><%= link_to 'Destroy', city_global_location, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New city_global_location', new_city_global_location_path %>

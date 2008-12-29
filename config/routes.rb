@@ -1,4 +1,10 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :us_state_codes
+
+  map.resources :country_codes
+
+  map.resources :city_global_locations
+
   # The priority is based upon order of creation: first created -> highest priority.
 
   # Sample of regular route:

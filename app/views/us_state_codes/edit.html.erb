@@ -1,0 +1,20 @@
+<h1>Editing us_state_code</h1>
+
+<% form_for(@us_state_code) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :code %><br />
+    <%= f.text_field :code %>
+  </p>
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @us_state_code %> |
+<%= link_to 'Back', us_state_codes_path %>
