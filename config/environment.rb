@@ -64,4 +64,15 @@ Rails::Initializer.run do |config|
 
   # Activate observers that should always be running
   # config.active_record.observers = :cacher, :garbage_collector
+
+  #As of Rails 2.0, pagination is no longer a part of Rails, instead this functionality
+  #is provided by a gem. You can add this gem to an existing application by adding
+  #the following to the end of conﬁg/environment.rb.
+  #Added by Hani Elabed on 12-31-2008 as suggested by AWDWR_3rd_Ed Page 526.
+  # Then, to install this gem (and any other missing gem dependencies), run
+  # sudo rake gems:install
+#  config.gem 'mislav-will_paginate' , :version => '~> 2.3.2' ,
+#    :lib => 'will_paginate' , :source => 'http://gems.github.com'
+  
+  
 end

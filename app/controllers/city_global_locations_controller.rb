@@ -2,7 +2,29 @@ class CityGlobalLocationsController < ApplicationController
   # GET /city_global_locations
   # GET /city_global_locations.xml
   def index
-    @city_global_locations = CityGlobalLocation.find(:all)
+    # I want pagination... So Replaced following line with CityGlobalLocation.paginate ...
+    #@city_global_locations = CityGlobalLocation.find(:all)
+    # ...
+    # So used http://github.com/mislav/will_paginate/wikis as suggested by AWDWR_3rd_Ed Page 526.
+    # ...    
+    #As of Rails 2.0, pagination is no longer a part of Rails, instead this functionality
+    #is provided by a gem. You can add this gem to an existing application by adding
+    #the following to the end of conﬁg/environment.rb.
+    #Rails::Initializer.run do |config|
+    #  config.gem 'mislav-will_paginate' , :version => '~> 2.3.2' ,
+    #    :lib => 'will_paginate' , :source => 'http://gems.github.com'
+    #end
+    # ...
+    #Added by Hani Elabed on 12-31-2008 
+    # Then, to install this gem (and any other missing gem dependencies), run
+    # sudo rake gems:install
+    # ...
+    #Then added following block to the bottom of views/city_global_locations/index.html.erb
+    #
+    #<hr/>
+    # <%= will_paginate @city_global_locations %>
+    #<hr/>
+    @city_global_locations = CityGlobalLocation.paginate  :page => params[:page], :per_page => 10, :order => 'city'
 
     respond_to do |format|
       format.html # index.html.erb
