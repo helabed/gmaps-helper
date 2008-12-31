@@ -24,6 +24,13 @@ class CityGlobalLocationsController < ApplicationController
     #<hr/>
     # <%= will_paginate @city_global_locations %>
     #<hr/>
+    #
+    #UPDATE by Hani Elabed on 12-31-2008 -- 6:20 PM GMT-2 
+    # I ended up reverting changes in config/environment.rb because wanted to use the rails plugin instead of ruby gem.
+    # To install the will_paginate rails plugin, I typed:
+    #
+    #     script/plugin install git://github.com/mislav/will_paginate.git
+    #
     @city_global_locations = CityGlobalLocation.paginate  :page => params[:page], :per_page => 10, :order => 'city'
 
     respond_to do |format|
