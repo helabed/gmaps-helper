@@ -71,8 +71,15 @@ Rails::Initializer.run do |config|
   #Added by Hani Elabed on 12-31-2008 as suggested by AWDWR_3rd_Ed Page 526.
   # Then, to install this gem (and any other missing gem dependencies), run
   # sudo rake gems:install
-#  config.gem 'mislav-will_paginate' , :version => '~> 2.3.2' ,
-#    :lib => 'will_paginate' , :source => 'http://gems.github.com'
-  
+
+  #  config.gem 'mislav-will_paginate' , :version => '~> 2.3.2' ,
+  #    :lib => 'will_paginate' , :source => 'http://gems.github.com'
+      #
+      #UPDATE by Hani Elabed on 12-31-2008 -- 6:20 PM GMT-2 
+      # I ended up reverting the above changes because wanted to use the rails plugin instead of ruby gem.
+      # To install the will_paginate rails plugin, I typed:
+      #
+      #     script/plugin install git://github.com/mislav/will_paginate.git
+      #
   
 end
