@@ -1,4 +1,3 @@
-Country,City,AccentCity,Region,Population,Latitude,Longitude
 ad,aixas,Aixàs,06,,42.4833333,1.4666667
 ad,anyos,Anyós,05,,42.5333333,1.5333333
 ae,adh dhayd,Adh Dhayd,07,,25.2822222,55.8902778

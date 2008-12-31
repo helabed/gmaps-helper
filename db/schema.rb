@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20081229115125) do
+ActiveRecord::Schema.define(:version => 20081230144040) do
 
   create_table "city_global_locations", :force => true do |t|
     t.string   "country"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(:version => 20081229115125) do
     t.decimal  "longitude",   :precision => 12, :scale => 9, :default => 0.0
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "region"
   end
 
   create_table "country_codes", :force => true do |t|
