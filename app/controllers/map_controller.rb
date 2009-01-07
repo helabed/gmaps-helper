@@ -1,23 +1,28 @@
-require 'net/http'
-
 class MapController < ApplicationController
 
-  QUERY_SERVER = "www.mapmap.org"
-  QUERY_CONTROLLER = "/googlemaps"
-  QUERY_ACTION = "/city-ws-proxy.jsp"
-  
   def locate_city_by_name_and_state
-    @city = params[:city]
-    query_parts = QUERY_CONTROLLER + QUERY_ACTION + '?city=' + @city
-    response = Net::HTTP.get_response( QUERY_SERVER, query_parts )
-    response.code       # => "200"
-    response.body.size  # => 21835
-    @results = response.body[0,response.body.size]
-    @results.strip!
+    city_state_country = params[:city]
+    city_row = nil
+    
+      # to deal with verona,wi,us
+    if city_state_country.count(',') == 2
+      city, state, country = city_state_country.split(",")  
+      city_row = CityGlobalLocation.find_by_name( :city => city , 
+                                                  :region => state, 
+                                                  :country => country )
+        # to deal with london,uk
+    elsif city_state_country.count(',') == 1 
+      city, country = city_state_country.split(",")  
+      city_row = CityGlobalLocation.find_by_name( :city => city , 
+                                                  :country => country )
+    end
+    
+    results = city_row != nil  ? city_row.to_xml  : "" 
+    results.strip!
     
     respond_to do |format|
       format.xml  { render  :layout => false , 
-                            :xml => @results }
+                            :xml => results }
     end
   end
 
@@ -25,14 +30,20 @@ class MapController < ApplicationController
 
   end
   
+  def locate_city_on_map
+    
+  end
+  
   def initialize
     super
   end
   
   def hello
+  
   end
   
   def goodbye
+
   end
 
 end
