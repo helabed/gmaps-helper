@@ -15,9 +15,21 @@ class MapController < ApplicationController
       city, country = city_state_country.split(",")  
       city_row = CityGlobalLocation.find_by_name( :city => city , 
                                                   :country => country )
+        # to deal with london
+    elsif city_state_country.count(',') == 0 
+      city = city_state_country  
+      city_row = CityGlobalLocation.find_by_name( :city => city  )
+    end
+
+    full_country_name = CountryCode.find_country( city_row )
+    city_row[:full_country_name] = full_country_name if city_row != nil
+
+    if city_row != nil && city_row[:country] == 'us'
+      full_state_name = UsStateCode.find_state( city_row )
+      city_row[:full_state_name] = full_state_name   if city_row != nil
     end
     
-    results = city_row != nil  ? city_row.to_xml  : "" 
+    results = city_row != nil  ? city_row.to_xml  : ""
     results.strip!
     
     respond_to do |format|

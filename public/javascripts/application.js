@@ -44,7 +44,7 @@ function getCityBean(){
 }
 
 function populateForm(cityBean){
-  document.getElementById("city").value = cityBean.city;
+  document.getElementById("city").value = cityBean.accentedCity != null ? cityBean.accentedCity : cityBean.city;
   document.getElementById("state").value = cityBean.region;
   document.getElementById("longitude").value = cityBean.longitude;
   document.getElementById("latitude").value = cityBean.latitude;
@@ -185,7 +185,9 @@ function displayCityOnMap(e){
   
   var description = "<div>";
   description += cityBean.city + ", " + cityBean.state + "<br/>";
-  description += " (" + cityBean.longitude + ", " + cityBean.latitude + ")";
+  description += cityBean.country + "<br/>";
+  description += " (" + cityBean.longitude + ", " + cityBean.latitude + ")" + "<br/>";
+  description += "Popul. " + cityBean.population;
   description += "</div>";
   
   //Safari aggressively line-breaks each word on whitespace and hyphens 
@@ -397,9 +399,19 @@ function lookupCityShortcut(){
 			// region or state 
           var region = root.getElementsByTagName("region")[0];
           cityBean.region = GXml.value(region);
+		  
+		  var fullStateName = root.getElementsByTagName("full-state-name")[0];
+		  if (fullStateName != null) {
+		  	cityBean.region = GXml.value(fullStateName);
+		  }
 
           var country = root.getElementsByTagName("country")[0];
           cityBean.country = GXml.value(country);
+		  
+		  var fullCountryName = root.getElementsByTagName("full-country-name")[0];
+		  if (fullCountryName != null) {
+		  	cityBean.country = GXml.value(fullCountryName);
+		  }
 
           var population = root.getElementsByTagName("population")[0];
           cityBean.population = GXml.value(population);
