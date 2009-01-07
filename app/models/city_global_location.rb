@@ -5,14 +5,13 @@ class CityGlobalLocation < ActiveRecord::Base
 
     condition = nil
     if region == nil
-      condition = { :city => requested_city[ :city ] , 
-                                             :country => requested_city[ :country ] }
+      condition = { :city    => requested_city[ :city ] , 
+                    :country => requested_city[ :country ] }
     else
-      condition = { :city => requested_city[ :city ] , 
-                                             :region => region,
-                                             :country => requested_city[ :country ] }
+      condition = { :city    => requested_city[ :city ] , 
+                    :country => requested_city[ :country ], 
+                    :region  => region }
     end
-  
 
     CityGlobalLocation.find( :first, 
                              :conditions => condition )
