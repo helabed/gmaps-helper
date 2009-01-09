@@ -31,7 +31,8 @@ class CityGlobalLocationsController < ApplicationController
     #
     #     script/plugin install git://github.com/mislav/will_paginate.git
     #
-    @city_global_locations = CityGlobalLocation.paginate  :page => params[:page], :per_page => 10, :order => 'city'
+    @city_global_locations = CityGlobalLocation.paginate  :page => params[:page], :per_page => 10
+      # , :order => 'city'   # this was to expensive for now - :order requires a total table traversal and resorting
 
     respond_to do |format|
       format.html # index.html.erb

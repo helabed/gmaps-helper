@@ -2,6 +2,7 @@ class MapController < ApplicationController
 
   def locate_city_by_name_and_state
     city_state_country = params[:city]
+    city_state_country.downcase! if city_state_country != nil
     city_row = nil
     
       # to deal with verona,wi,us
@@ -21,7 +22,7 @@ class MapController < ApplicationController
       city_row = CityGlobalLocation.find_by_name( :city => city  )
     end
 
-    full_country_name = CountryCode.find_country( city_row )
+    full_country_name = CountryCode.find_country( city_row )  if city_row != nil
     city_row[:full_country_name] = full_country_name if city_row != nil
 
     if city_row != nil && city_row[:country] == 'us'

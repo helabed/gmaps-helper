@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20081230144040) do
+ActiveRecord::Schema.define(:version => 20090109131438) do
 
   create_table "city_global_locations", :force => true do |t|
     t.string   "country"
@@ -22,6 +22,8 @@ ActiveRecord::Schema.define(:version => 20081230144040) do
     t.datetime "updated_at"
     t.string   "region"
   end
+
+  add_index "city_global_locations", ["city"], :name => "index_city_global_locations_on_city"
 
   create_table "country_codes", :force => true do |t|
     t.string   "code"
