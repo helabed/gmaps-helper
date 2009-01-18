@@ -1,4 +1,4 @@
-<h1>Listing of Global Cities</h1>
+<h1>City Search Results</h1>
 
 <table border=1>
   <tr>
@@ -13,7 +13,7 @@
 
 <% for city_global_location in @city_global_locations %>
   <tr>
-    <td><%=h city_global_location.country %></td>
+    <td><%=h city_global_location.country %> - <%= CountryCode.find_country( city_global_location ) %></td>
     <td><%=h city_global_location.city %></td>
     <td><%=h city_global_location.accent_city %></td>
     <td><%=h city_global_location.region %></td>
@@ -21,12 +21,11 @@
     <td><%=h city_global_location.latitude %></td>
     <td><%=h city_global_location.longitude %></td>
     <td><%= link_to 'Show', city_global_location %></td>
+    <td><%= link_to 'Edit', edit_city_global_location_path(city_global_location) %></td>
   </tr>
 <% end %>
 </table>
 
-<hr/>
-<%= will_paginate @city_global_locations %>
-<hr/>
 
 <br />
+<%= link_to 'search cities', {:action => 'search' } %>

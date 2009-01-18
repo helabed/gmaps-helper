@@ -112,4 +112,97 @@ class CityGlobalLocationsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+  #  
+  #  
+  # search screen /city_global_locations/search
+  #  
+  def search
+    @city_search_bean = CityGlobalLocation.new
+
+    respond_to do |format|
+      format.html # search.html.erb
+      format.xml  { render :xml => @city_search_bean }
+    end
+    
+  end
+
+  #  
+  #  
+  # search_for /city_global_locations/search_for action
+  #  
+  def search_for
+
+    if (params[:city_global_location][:country] == '')
+      condition = [ "city like ? ", "#{params[:city_global_location][:city]}%" ]
+    else
+      condition = [ "city like ? and country = ?", 
+                                     "#{params[:city_global_location][:city]}%",
+                                     params[:city_global_location][:country]  
+                   ]
+    end
+
+    @city_global_locations = CityGlobalLocation.find( :all, 
+                                                      :conditions => condition,
+                                                      :limit => 20
+                                                    )
+
+    respond_to do |format|
+      format.html # search_for.html.erb 
+      format.xml  { render :xml => @city_global_locations }
+    end
+  end
+
+
+#    ================================
+#    ================================
+#    ================================
+#    Leave this here for future usage
+#    ================================
+#    ================================
+#    ================================
+#    user = params[:user]
+#    
+#    logger.debug("params[:name] = #{user[:name]}")
+#    #@users = User.find_all_by_name(user[:name] )
+#    
+#    if( user[:name].length > 0 and user[:full_name].length > 0 and user[:email_address].length > 0 )
+#      @condition = "name like '%#{user[:name]}%'" +
+#                    "OR full_name like '%#{user[:full_name]}%'" +
+#                    "OR email_address like '%#{user[:email_address]}%'" 
+#
+#    elsif ( user[:name].length > 0 and user[:full_name].length > 0 and user[:email_address].length == 0 )
+#      @condition = "name like '%#{user[:name]}%'" +
+#                    "OR full_name like '%#{user[:full_name]}%'"  
+#
+#    elsif ( user[:name].length > 0 and user[:full_name].length == 0 and user[:email_address].length == 0 )
+#      @condition = "name like '%#{user[:name]}%'" 
+#      
+#    elsif ( user[:name].length == 0 and user[:full_name].length > 0 and user[:email_address].length == 0 )
+#      @condition = "full_name like '%#{user[:full_name]}%'" 
+#      
+#    elsif ( user[:name].length == 0 and user[:full_name].length == 0 and user[:email_address].length > 0 )
+#      @condition = "email_address like '%#{user[:email_address]}%'" 
+#      
+#    elsif( user[:name].length == 0 and user[:full_name].length > 0 and user[:email_address].length > 0 )
+#      @condition = "full_name like '%#{user[:full_name]}%'" +
+#                    "OR email_address like '%#{user[:email_address]}%'" 
+#
+#    elsif( user[:name].length > 0 and user[:full_name].length == 0 and user[:email_address].length > 0 )
+#      @condition = "name like '%#{user[:name]}%'" +
+#                    "OR email_address like '%#{user[:email_address]}%'" 
+#
+#    elsif( user[:name].length > 0 and user[:full_name].length > 0 and user[:email_address].length == 0 )
+#      @condition = "name like '%#{user[:name]}%'" +
+#                    "OR full_name like '%#{user[:full_name]}%'"  
+#
+#    end
+#    
+#    
+#    @users = User.find(:all, :conditions => @condition )
+#    logger.debug("users: " + @users.to_s )
+#    return @users
+#    
+#    #@user_pages, @users = paginate :users, :per_page => 6
+  
 end

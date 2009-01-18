@@ -10,7 +10,7 @@ describe CityGlobalLocationsController do
 
     it "should expose all city_global_locations as @city_global_locations" do
       #to support pagination - Hani 12-31-2008
-      CityGlobalLocation.should_receive(:paginate).with(:page => params[:page], :per_page => 10, :order => 'city').and_return([mock_city_global_location])
+      CityGlobalLocation.should_receive(:paginate).with(:page => params[:page], :per_page => 10).and_return([mock_city_global_location])
       #CityGlobalLocation.should_receive(:find).with(:all).and_return([mock_city_global_location])
       get :index
       assigns[:city_global_locations].should == [mock_city_global_location]
@@ -21,7 +21,7 @@ describe CityGlobalLocationsController do
       it "should render all city_global_locations as xml" do
         request.env["HTTP_ACCEPT"] = "application/xml"
         #to support pagination - Hani 12-31-2008
-        CityGlobalLocation.should_receive(:paginate).with(:page => params[:page], :per_page => 10, :order => 'city').and_return(city_global_locations = mock("Array of CityGlobalLocations"))
+        CityGlobalLocation.should_receive(:paginate).with(:page => params[:page], :per_page => 10).and_return(city_global_locations = mock("Array of CityGlobalLocations"))
         #CityGlobalLocation.should_receive(:find).with(:all).and_return(city_global_locations = mock("Array of CityGlobalLocations"))
         city_global_locations.should_receive(:to_xml).and_return("generated XML")
         get :index
