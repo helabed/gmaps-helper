@@ -1,23 +1,36 @@
-<h1>Search for a City</h1>
+<html>
+  <head>
+    <title>Search for a City</title>
+    <%= javascript_include_tag :defaults %>
+  </head>
 
-<form action="/city_global_locations/search_for" method="get">
+	<h1>Search for a City</h1>
+	
+	<form action="/city_global_locations/search_for" method="get">
+	
+	  <p>
+	    country<br />
+		<%= select("city_global_location", "country", CountryCode.find(:all).collect {|o| [ o.name, o.code.downcase ] },
+					{ :include_blank => true } ) %>
+	  </p>
+	  <p>
+	    city<br />
+	    
+	
+	  	<%= text_field_with_auto_complete :city_global_location, :city, {}, { 
+																		:frequency => 0.5, 
+																		:min_chars => 4, 
+																		:method => :get} %>
+	
+	
+	  </p>
+	
+	
+	  <p>
+	    <input id="search_submit" name="search_for" type="submit" value="Search" />
+	  </p>
+	</form>
 
-  <p>
-    country<br />
-	<%= select("city_global_location", "country", CountryCode.find(:all).collect {|o| [ o.name, o.code.downcase ] },
-				{ :include_blank => true } ) %>
-  </p>
-  <p>
-    city<br />
-    <input id="city_global_location_city" name="city_global_location[city]" size="30" type="text" />
 
-  </p>
-
-
-  <p>
-    <input id="search_submit" name="search_for" type="submit" value="Search" />
-  </p>
-</form>
-
-
-<%= link_to 'Back', city_global_locations_path %>
+	<%= link_to 'Back', city_global_locations_path %>
+</html>

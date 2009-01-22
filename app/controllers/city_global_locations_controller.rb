@@ -1,4 +1,8 @@
 class CityGlobalLocationsController < ApplicationController
+  
+  auto_complete_for :city_global_location, :city, :limit => 5, :order => 'city DESC'
+  
+  
   # GET /city_global_locations
   # GET /city_global_locations.xml
   def index
@@ -126,6 +130,16 @@ class CityGlobalLocationsController < ApplicationController
     end
     
   end
+
+#  def auto_complete_for_city_global_location_city
+#    condition = [ "city like ? ", "#{params[:city_global_location][:city]}%" ]
+#
+#    city_global_location_city_auto_complete = CityGlobalLocation.find( :all, 
+#                                                  :conditions => condition,
+#                                                  :limit => 20
+#                                                )
+#
+#  end
 
   #  
   #  

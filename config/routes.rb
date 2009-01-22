@@ -6,7 +6,7 @@ ActionController::Routing::Routes.draw do |map|
     # added these here to bypass the RESTful system that was driving me crazy.
   map.connect 'city_global_locations/search', :controller => 'city_global_locations', :action => 'search'
   map.connect 'city_global_locations/search_for', :controller => 'city_global_locations', :action => 'search_for'
-  map.resources :city_global_locations
+  map.resources :city_global_locations, :collection => {:auto_complete_for_city_global_location_city => :get}
 
   # The priority is based upon order of creation: first created -> highest priority.
 
