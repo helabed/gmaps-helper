@@ -1,6 +1,6 @@
 class CityGlobalLocationsController < ApplicationController
   
-  auto_complete_for :city_global_location, :city, :limit => 5, :order => 'city DESC'
+  auto_complete_for :city_global_location, :city, :limit => 10
   
   
   # GET /city_global_locations
@@ -131,15 +131,41 @@ class CityGlobalLocationsController < ApplicationController
     
   end
 
-#  def auto_complete_for_city_global_location_city
-#    condition = [ "city like ? ", "#{params[:city_global_location][:city]}%" ]
-#
-#    city_global_location_city_auto_complete = CityGlobalLocation.find( :all, 
-#                                                  :conditions => condition,
-#                                                  :limit => 20
-#                                                )
-#
-#  end
+
+
+  #  
+  #  
+  # gets called by the auto_complete plugin from
+  # the search screen /city_global_locations/search
+  #  
+  def auto_complete_for_city_global_location_city
+
+    condition = get_city_search_condition( params )
+
+    @cities = CityGlobalLocation.find(:all, 
+      :conditions => condition, 
+      :limit => 10)
+    render :partial => 'cities'
+  end
+
+
+
+  #  
+  #  
+  # Unified condition (WHERE clause ) for city searches with or without the 'country' param. 
+  #  
+  def get_city_search_condition( params )
+
+    if (params[:city_global_location][:country] == nil || params[:city_global_location][:country] == '')
+      condition = [ "LOWER(city) LIKE ? ", "#{params[:city_global_location][:city]}%" ]
+    else
+      condition = [ "LOWER(city) LIKE ? AND country = ?", 
+                                     "#{params[:city_global_location][:city]}%",
+                                     params[:city_global_location][:country]  
+                   ]
+    end
+    return condition
+  end
 
   #  
   #  
@@ -147,14 +173,7 @@ class CityGlobalLocationsController < ApplicationController
   #  
   def search_for
 
-    if (params[:city_global_location][:country] == '')
-      condition = [ "city like ? ", "#{params[:city_global_location][:city]}%" ]
-    else
-      condition = [ "city like ? and country = ?", 
-                                     "#{params[:city_global_location][:city]}%",
-                                     params[:city_global_location][:country]  
-                   ]
-    end
+    condition = get_city_search_condition( params )
 
     @city_global_locations = CityGlobalLocation.find( :all, 
                                                       :conditions => condition,

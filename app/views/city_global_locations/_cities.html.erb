@@ -1,0 +1,10 @@
+<ul class="cities">
+<% for city in @cities do -%>
+  <li class="city">
+    <div class="city"><%=h city.city %></div>
+    <div class="country">
+      <span class="informal"><%= CountryCode.find_country( city ) %> - <%=h city.country %></span>
+    </div>
+  </li>
+<% end -%>
+</ul>
