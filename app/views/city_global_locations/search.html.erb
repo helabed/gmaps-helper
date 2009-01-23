@@ -22,12 +22,14 @@
 	  </p>
 	  <p>
 	    city<br />
+		<img id='auto_complete_spinner' src='/images/spinner.gif' style='display:none;' />
 	  	<%= text_field_with_auto_complete :city_global_location, 
 	      :city, 
 	      {},  
 	      { 
 		      :method => :get,
-			  :skip_style => true   
+			  :skip_style => true,
+			  :indicator => 'auto_complete_spinner'
 	      } 
 		%>
 	  </p>

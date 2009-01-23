@@ -175,10 +175,12 @@ class CityGlobalLocationsController < ApplicationController
 
     condition = get_city_search_condition( params )
 
-    @city_global_locations = CityGlobalLocation.find( :all, 
-                                                      :conditions => condition,
-                                                      :limit => 20
-                                                    )
+    @city_global_locations = CityGlobalLocation.paginate( :all, 
+                                                          :conditions => condition,
+                                                          :page => params[:page], 
+                                                          :per_page => 20                             
+                                                        )
+
 
     respond_to do |format|
       format.html # search_for.html.erb 

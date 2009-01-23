@@ -17,7 +17,7 @@
     <td><%=h city_global_location.city %></td>
     <td><%=h city_global_location.accent_city %></td>
     <td><%=h city_global_location.region %></td>
-    <td><%=h city_global_location.population %></td>
+    <td><%=h number_with_delimiter city_global_location.population %></td>
     <td><%=h city_global_location.latitude %></td>
     <td><%=h city_global_location.longitude %></td>
     <td><%= link_to 'Show', city_global_location %></td>
