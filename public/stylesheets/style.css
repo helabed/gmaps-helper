@@ -97,3 +97,48 @@ tr.even {
   background: #f4f5cb;
 }
 
+
+
+.largetext {
+    scrollbar-3dlight-color: #B0C4DE;
+    scrollbar-arrow-color: #FFFFFF;
+    scrollbar-base-color: #8BA9CF;
+    scrollbar-darkshadow-color: #436DA3;
+    scrollbar-face-color: #34547E;
+    scrollbar-highlight-color: #E6ECF4;
+    scrollbar-shadow-color: #000000;
+}
+
+#us-state-codes{
+  overflow-y: scroll; 
+  height:600px; 
+  width:300px
+}
+
+#country-codes{
+  overflow-y: scroll; 
+  height:600px; 
+  width:300px
+}
+
+#country-codes > table{
+  overflow-y: scroll; 
+  height:600px; 
+  width:285px
+}
+
+#tableSection{
+  overflow-y:scroll; 
+  height:200px;
+}
+
+#tableSection > table {
+  border: 1;
+  width:  400px; 
+  height: 200px; 
+}
+
+#map {
+  width: 700px; 
+  height: 450px; 
+}

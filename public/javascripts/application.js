@@ -97,7 +97,7 @@ function addToTable(cityBean){
   var deleteButton = document.createElement("input");
   deleteButton.type = "button";
   deleteButton.name = "Delete";
-  deleteButton.value = "Delete";
+  deleteButton.value = "Remove";
   registerListener(deleteButton, "click", deleteCity, false);
   deleteCell.appendChild(deleteButton);
   

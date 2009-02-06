@@ -1,19 +1,27 @@
 <h1>Listing of Country Codes</h1>
-
-<table>
-  <tr>
-    <th>Code</th>
-    <th>Name</th>
-  </tr>
-
-<% for country_code in @country_codes %>
-	<tr class="<%= cycle('odd', 'even') %>">
-    <td><%=h country_code.code %></td>
-    <td><%=h country_code.name %></td>
-    <td><%= link_to 'Show', country_code %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
+<div id="country-codes">
+  <table>
+    <tr>
+      <th>
+        Code
+      </th>
+      <th>
+        Name
+      </th>
+    </tr>
+    <% for country_code in @country_codes %>
+    <tr class="<%= cycle('odd', 'even') %>">
+      <td>
+        <%=h country_code.code %>
+      </td>
+      <td>
+        <%=h country_code.name %>
+      </td>
+      <td>
+        <%= link_to 'Show', country_code %>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+</div>
+<br/>

@@ -1,19 +1,27 @@
 <h1>Listing of US State Codes</h1>
-
-<table>
-  <tr>
-    <th>Code</th>
-    <th>Name</th>
-  </tr>
-
-<% for us_state_code in @us_state_codes %>
-	<tr class="<%= cycle('odd', 'even') %>">
-    <td><%=h us_state_code.code %></td>
-    <td><%=h us_state_code.name %></td>
-    <td><%= link_to 'Show', us_state_code %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
+<div id="us-state-codes">
+  <table>
+    <tr>
+      <th>
+        Code
+      </th>
+      <th>
+        Name
+      </th>
+    </tr>
+    <% for us_state_code in @us_state_codes %>
+    <tr class="<%= cycle('odd', 'even') %>">
+      <td>
+        <%=h us_state_code.code %>
+      </td>
+      <td>
+        <%=h us_state_code.name %>
+      </td>
+      <td>
+        <%= link_to 'Show', us_state_code %>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+</div>
+<br/>
