@@ -4,5 +4,6 @@ tmp/pids/*
 tmp/sessions/*
 tmp/sockets/*
 config/database.yml
+geo-info/world-cities-pop.txt
 .loadpath
 .project
