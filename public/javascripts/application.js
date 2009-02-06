@@ -187,7 +187,7 @@ function displayCityOnMap(e){
   description += cityBean.city + ", " + cityBean.state + "<br/>";
   description += cityBean.country + "<br/>";
   description += " (" + cityBean.longitude + ", " + cityBean.latitude + ")" + "<br/>";
-  description += "Popul. " + cityBean.population;
+  description += "Pop. " + cityBean.population;
   description += "</div>";
   
   //Safari aggressively line-breaks each word on whitespace and hyphens 

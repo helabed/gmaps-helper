@@ -1,6 +1,3 @@
-/*
-Basic Tags
- */
 body {
   color: #070505;
   font: 10px / 150% Verdana, Arial, Sans-Serif;
@@ -17,9 +14,7 @@ a:hover {
   color: #070505;
   background-color: #606870;
 }
-/* 
-Main Tags
-*/
+
 #content {
   background-color: #dadfe4;
   margin: auto auto auto;
@@ -54,23 +49,6 @@ Main Tags
   float: left;
 } 
 
-.sidebar {
-  width: auto;
-  height: auto;
-  background-color: #dadfe4;
-  margin-right: 0px;
-  float: top;
-  text-align: left;
-} 
-
-.about {
-  width: auto;
-  padding: 10px;
-  background-color: #606870;
-  text-align: left;
-  float: top;
-  visibility: hidden;
-} 
 
 .footer {
   width: 600px;
@@ -81,9 +59,11 @@ Main Tags
   margin-top: 10px;
 }
 
-/*
-Special Function Tags
-*/
+.footer a:link {
+  color: #e3e3e3;
+  font-size: inherit;
+}
+
 .slogan {
   font-size: 12px;
   font-family: monospace;
@@ -95,30 +75,6 @@ Special Function Tags
 	color: f20909;
 } 
 
-.text p.date {
-  font-size: 11px;
-  text-align: right;
-  padding-bottom: 3px;
-  padding-top: 3px;
-  background-color: #606870;
-  color: #e3e3e3;
-  padding-right: 5px;
-  margin-bottom: 10px;
-  font-family: monospace;
-} 
-
-.sidebar li {
-  list-style-type: none;
-  text-align: left;
-} 
-
-.titlebar h2 {
-  color: #ff0000;
-  font-size: 20px;
-  font-weight: lighter;
-  text-transform: uppercase;
-  margin: 0;
-} 
 
 .text p.content {
   color: #e3e3e3;
@@ -130,35 +86,7 @@ html > body > div#content > div.text > h1 {
   font-size: 12px;
 } 
 
-.text h2 {
-  color: #e3e3e3;
-  font-size: 12px;
-  text-transform: uppercase;
-  font-weight: lighter;
-  margin: 0px;
-} 
 
-.text p.info {
-  color: #e3e3e3;
-  font-size: 8px;
-  font-weight: lighter;
-  font-family: monospace;
-  margin: 0px;
-  padding-left: 1em;
-} 
-
-.sidebar h2 {
-  color: inherit;
-  font-size: 10px;
-  font-weight: lighter;
-  font-family: Verdana;
-  text-transform: uppercase;
-} 
-
-.footer a:link {
-  color: #e3e3e3;
-  font-size: inherit;
-}
 
 
 tr.odd {
