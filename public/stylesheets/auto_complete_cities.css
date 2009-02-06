@@ -6,12 +6,17 @@ div.auto_complete {
   margin:0px;
   padding:0px;
 }
+
 ul.cities  {
   list-style-type: none;
   margin:0px;
   padding:0px;
 }
-ul.cities li.selected { background-color: #ffb; }
+
+ul.cities li.selected { 
+	background-color: #ffffbb; 
+}
+
 li.city {
   list-style-type: none;
   display:block;
@@ -19,21 +24,26 @@ li.city {
   padding:2px;
   height:32px;
 }
+
 li.city div.image {
   float:left;
   width:32px;
   height:32px;
   margin-right:8px;
 }
+
 li.city div.city {
   font-weight:bold;
   font-size:12px;
   line-height:1.2em;
+	color:#f31010;
 }
+
 li.city div.country {
   font-size:10px;
   color:#888;
 }
+
 #list {
   margin:0;
   margin-top:10px;
@@ -41,6 +51,7 @@ li.city div.country {
   list-style-type: none;
   width:250px;
 }
+
 #list li {
   margin:0;
   margin-bottom:4px;

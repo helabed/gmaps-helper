@@ -1,6 +1,6 @@
 <h1>Listing of Global Cities</h1>
 
-<table border=1>
+<table border=0>
   <tr>
     <th>Country</th>
     <th>City</th>
@@ -12,8 +12,8 @@
   </tr>
 
 <% for city_global_location in @city_global_locations %>
-  <tr>
-    <td><%=h city_global_location.country %></td>
+	<tr class="<%= cycle('odd', 'even') %>">
+    <td><%=h city_global_location.country %> - <%=h CountryCode.find_country( city_global_location ) %></td>
     <td><%=h city_global_location.city %></td>
     <td><%=h city_global_location.accent_city %></td>
     <td><%=h city_global_location.region %></td>

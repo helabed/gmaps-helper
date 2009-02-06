@@ -1,0 +1,171 @@
+/*
+Basic Tags
+ */
+body {
+  color: #070505;
+  font: 10px / 150% Verdana, Arial, Sans-Serif;
+  background-color: #dadfe4;
+}
+
+a {
+  color: #090db3;
+  text-decoration: underline;
+  padding: 2px;
+}
+
+a:hover {
+  color: #070505;
+  background-color: #606870;
+}
+/* 
+Main Tags
+*/
+#content {
+  background-color: #dadfe4;
+  margin: auto auto auto;
+  width: 600px;
+  height: auto
+} 
+
+.titlebar {
+	text-align: left;
+	margin-bottom: 10px;
+  width: auto;
+  height: auto;
+  background-color: #dadfe4;
+  text-align: left;
+  margin-right: 10px;
+	display:inline;
+	color: #993333;
+	font-family: Georgia,'Times New Roman',serif;
+	font-size: large;
+	margin-bottom: 10px;
+} 
+
+.text {
+  width: 600px;
+  height: auto;
+  background-color: #dadfe4;
+  text-align: left;
+  padding: 0px;
+  margin: 0px;
+  margin-right: 0px;
+  color: inherit;
+  float: left;
+} 
+
+.sidebar {
+  width: auto;
+  height: auto;
+  background-color: #dadfe4;
+  margin-right: 0px;
+  float: top;
+  text-align: left;
+} 
+
+.about {
+  width: auto;
+  padding: 10px;
+  background-color: #606870;
+  text-align: left;
+  float: top;
+  visibility: hidden;
+} 
+
+.footer {
+  width: 600px;
+  text-align: center;
+  font-family: monospace;
+  font-size: 9px;
+  margin: 0px;
+  margin-top: 10px;
+}
+
+/*
+Special Function Tags
+*/
+.slogan {
+  font-size: 12px;
+  font-family: monospace;
+  margin: 0px;
+  margin-top: 3px;
+  text-transform: capitalize;
+	float: right;
+	display:inline;
+	color: f20909;
+} 
+
+.text p.date {
+  font-size: 11px;
+  text-align: right;
+  padding-bottom: 3px;
+  padding-top: 3px;
+  background-color: #606870;
+  color: #e3e3e3;
+  padding-right: 5px;
+  margin-bottom: 10px;
+  font-family: monospace;
+} 
+
+.sidebar li {
+  list-style-type: none;
+  text-align: left;
+} 
+
+.titlebar h2 {
+  color: #ff0000;
+  font-size: 20px;
+  font-weight: lighter;
+  text-transform: uppercase;
+  margin: 0;
+} 
+
+.text p.content {
+  color: #e3e3e3;
+  font-size: inherit;
+} 
+
+
+html > body > div#content > div.text > h1 {
+  font-size: 12px;
+} 
+
+.text h2 {
+  color: #e3e3e3;
+  font-size: 12px;
+  text-transform: uppercase;
+  font-weight: lighter;
+  margin: 0px;
+} 
+
+.text p.info {
+  color: #e3e3e3;
+  font-size: 8px;
+  font-weight: lighter;
+  font-family: monospace;
+  margin: 0px;
+  padding-left: 1em;
+} 
+
+.sidebar h2 {
+  color: inherit;
+  font-size: 10px;
+  font-weight: lighter;
+  font-family: Verdana;
+  text-transform: uppercase;
+} 
+
+.footer a:link {
+  color: #e3e3e3;
+  font-size: inherit;
+}
+
+
+tr.odd {
+  background: #ffffbb
+}
+
+tr.even {
+  background: #f4f5cb;
+}
+

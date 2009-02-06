@@ -1,4 +1,4 @@
-<h1>Listing us_state_codes</h1>
+<h1>Listing of US State Codes</h1>
 
 <table>
   <tr>
@@ -7,16 +7,13 @@
   </tr>
 
 <% for us_state_code in @us_state_codes %>
-  <tr>
+	<tr class="<%= cycle('odd', 'even') %>">
     <td><%=h us_state_code.code %></td>
     <td><%=h us_state_code.name %></td>
     <td><%= link_to 'Show', us_state_code %></td>
-    <td><%= link_to 'Edit', edit_us_state_code_path(us_state_code) %></td>
-    <td><%= link_to 'Destroy', us_state_code, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New us_state_code', new_us_state_code_path %>

@@ -1,0 +1,219 @@
+<html>
+<head>
+<title>Jason Moon's Calendar Script</title>
+<script type="text/javascript" src="/javascripts/calendarDateInput.js"></script>
+</head>
+<body>
+<table width="100%">
+<tr>
+   <td valign="top" nowrap="nowrap"><h2 style="color:navy">Jason Moon's Fool-Proof Date Input Calendar Script</h2></td>
+   <td align="right">
+   
+      &nbsp;
+
+   
+   </td>
+</tr>
+</table>
+<h3 style="color:blue">Required client-side JavaScript include:</h3>
+<div style="color:gray">&lt;script type="text/javascript" src="calendarDateInput.js"&gt;&lt;/script&gt;</div>
+<h3 style="color:blue">Create the calendar-control by calling the "DateInput" function.  Parameters are:</h3>
+<ol>
+   <li>DateName - STRING - required; name of the hidden form element to store the selected, formatted date</li>
+   <li>Required - BOOLEAN - optional; default = FALSE</li>
+
+   <li>DateFormat - STRING - optional; default is set as a global variable in the script (MM/DD/YYYY on this page)</li>
+   <li>DefaultDate - STRING - optional; default = current system date from the client PC</li>
+</ol>
+<form>
+<h3 style="color:blue">Supported date formats:</h3>
+<ul>
+   <li>YYYYMMDD</li>
+   <li>YYYY-MM-DD *</li>
+
+   <li>YYYY-DD-MM *</li>
+   <li>YYYY/MM/DD *</li>
+   <li>YYYY/DD/MM *</li>
+   <li>YYYY-DD-MON * &nbsp; **</li>
+   <li>YYYY-MON-DD * &nbsp; **</li>
+
+   <li>MM-DD-YYYY *</li>
+   <li>DD-MM-YYYY *</li>
+   <li>MM/DD/YYYY *</li>
+   <li>DD/MM/YYYY *</li>
+   <li>DD-MON-YYYY * &nbsp; **</li>
+
+   <li>MON-DD-YYYY * &nbsp; **</li>
+</ul>
+* &nbsp; 2-digit year can be used instead of 4-digit year<br/>
+** 3-character month name abbreviation can also be specified as MMM
+<br/>
+<h3 style="color:blue">Working Examples:</h3>
+<table>
+<!-- Jason's Anniversary -->
+<tr>
+
+   <td valign="top" align="right" nowrap="nowrap"><strong>Jason's Anniversary:</strong></td>
+   <td nowrap="nowrap">
+      <script>DateInput('anniversary', false, 'DD-MON-YYYY', '28-JUN-2003')</script>
+      <div>Called like this: <span style="color:gray">&lt;script&gt;DateInput('anniversary', false, 'DD-MON-YYYY', '28-JUN-2003')&lt;/script&gt;</span></div>
+   </td>
+</tr>
+
+<tr>
+   <td>&nbsp;</td>
+   <td>
+      <input type="button" value="Show 'anniversary' hidden field value" onClick="alert(this.form.anniversary.value)">
+      <br>Button action: <span style="color:gray">onClick="alert(this.form.anniversary.value)"</span>
+   </td>
+</tr>
+<tr>
+   <td colspan="2">&nbsp;</td>
+
+</tr>
+<!-- Isabella's Birthday -->
+<tr>
+   <td valign="top" align="right" nowrap="nowrap"><strong>Isabella's Birthday:</strong></td>
+   <td nowrap="nowrap">
+      <script>DateInput('isabella_birth', true, 'YY/DD/MM', '05/13/04')</script>
+      <div>Called like this: <span style="color:gray">&lt;script&gt;DateInput('isabella_birth', true, 'YY/DD/MM', '05/13/04')&lt;/script&gt;</span></div>
+
+   </td>
+</tr>
+<tr>
+   <td>&nbsp;</td>
+   <td>
+      <input type="button" value="Show 'isabella_birth' hidden field value" onClick="alert(this.form.isabella_birth.value)">
+      <br>Button action: <span style="color:gray">onClick="alert(this.form.isabella_birth.value)"</span>
+   </td>
+</tr>
+
+<tr>
+   <td colspan="2">&nbsp;</td>
+</tr>
+<!-- Independence Day -->
+<tr>
+   <td valign="top" align="right" nowrap="nowrap"><strong>Independence Day:</strong></td>
+   <td nowrap="nowrap">
+      <script>DateInput('independence', false, 'YYYY-MM-DD', '1776-07-04')</script>
+      <div>Called like this: <span style="color:gray">&lt;script&gt;DateInput('independence', false, 'YYYY-MM-DD', '1776-07-04')&lt;/script&gt;</span></div>
+
+   </td>
+</tr>
+<tr>
+   <td>&nbsp;</td>
+   <td>
+      <input type="button" value="Show 'independence' hidden field value" onClick="alert(this.form.independence.value)">
+      <br>Button action: <span style="color:gray">onClick="alert(this.form.independence.value)"</span>
+   </td>
+</tr>
+
+<tr>
+   <td colspan="2">&nbsp;</td>
+</tr>
+<!-- Today -->
+<tr>
+   <td valign="top" align="right" nowrap="nowrap"><strong>Today:</strong></td>
+   <td nowrap="nowrap">
+      <script>DateInput('today', true)</script>
+      <div>Called like this: <span style="color:gray">&lt;script&gt;DateInput('today', true)&lt;/script&gt;</span></div>
+
+   </td>
+</tr>
+<tr>
+   <td>&nbsp;</td>
+   <td>
+      <input type="button" value="Show 'today' hidden field value" onClick="alert(this.form.today.value)">
+      (formatted in this page's default date format: MM/DD/YYYY)
+      <br>Button action: <span style="color:gray">onClick="alert(this.form.today.value)"</span>
+   </td>
+
+</tr>
+<tr>
+   <td colspan="2">&nbsp;</td>
+</tr>
+<!-- Your Birth Date -->
+<tr>
+   <td valign="top" align="right" nowrap="nowrap"><strong>Your Birth Date:</strong></td>
+   <td nowrap="nowrap">
+      <script>DateInput('your_birth', false, 'DD-MON-YY')</script>
+      <div>Called like this: <span style="color:gray">&lt;script&gt;DateInput('your_birth', false, 'DD-MON-YY')&lt;/script&gt;</span></div>
+
+   </td>
+</tr>
+<tr>
+   <td>&nbsp;</td>
+   <td>
+      <input type="button" value="Show 'your_birth' hidden field value" onClick="alert(this.form.your_birth.value)">
+      <br>Button action: <span style="color:gray">onClick="alert(this.form.your_birth.value)"</span>
+   </td>
+</tr>
+
+<tr>
+   <td colspan="2">&nbsp;</td>
+</tr>
+<!-- Missing 1st Parameter -->
+<tr>
+   <td valign="top" align="right" nowrap="nowrap"><strong>Missing 1st Parameter:</strong></td>
+   <td nowrap="nowrap">
+      <script>DateInput()</script>
+      <div>Called like this: <span style="color:gray">&lt;script&gt;DateInput()&lt;/script&gt;</span></div>
+
+   </td>
+</tr>
+</table>
+</form>
+<h3 style="color:blue">Access via JavaScript:</h3>
+<ul>
+   <li>Custom object for the currently-selected date: <span style="color:blue">DATENAME</span><strong>_Object.picked</strong><br/>...where <span style="color:blue">DATENAME</span> is the name from the 1st parameter of the DateInput function</li>
+
+   <li>Properties of the <span style="color:blue">DATENAME</span><strong>_Object.picked</strong> object:
+      <ul>
+         <li>date - DATE - Selected date (JavaScript's built-in Date object)</li>
+         <li>yearValue - NUMERIC - Selected year, as 4 digits</li>
+         <li>monthIndex - NUMERIC - Selected month (0-11)</li>
+         <li>monthName - STRING - Full name of selected month</li>
+
+         <li>monthShort - STRING - First 3 characters of monthName</li>
+         <li>day - NUMERIC - Selected day of month (1-31)</li>
+         <li>dayCount - NUMERIC - Number of days in the month</li>
+         <li>formatted - STRING - Selected date, in the specified format</li>
+      </ul>
+   </li>
+   <li>
+
+      Example:<br/>
+      <div style="color:gray">&lt;script&gt;DateInput('someDate', true)&lt;/script&gt;<br/></div>
+      - - -<br/>
+      <div style="color:gray">
+         &lt;script&gt;<br/>function validateTheDate() {<br/>
+
+         &nbsp;&nbsp;&nbsp;var Today = new Date();<br/>
+         &nbsp;&nbsp;&nbsp;if (someDate_Object.picked.date < Today) alert('Cannot select a date in the past.');<br/>
+         &nbsp;&nbsp;&nbsp;else if (someDate_Object.picked.yearValue > 2020) alert('Cannot select dates beyond 2020.');<br/>
+         }<br/>&lt;/script&gt;
+      </div>
+   </li>
+
+</ul>
+<h3 style="color:blue">calendarDateInput.js Customizable variables:</h3>
+<ul>
+   <li>Default date format, when none is supplied (3rd parameter) in the call to the "DateInput" function</li>
+   <li>Number of seconds to wait before the pop-up calendar will disappear</li>
+   <li>The year at which to interpret 2-digit years in the 20th century, versus the 21st century</li>
+   <li>Text to display in the 1st month list item when the date isn't required</li>
+   <li>Calendar attributes
+      <ul>
+
+         <li>Font size and style</li>
+         <li>Background color</li>
+         <li>Cell dimensions</li>
+         <li>Top row background color</li>
+         <li>Highlighted day background color</li>
+      </ul>
+
+   </li>
+   <li><img src="http://images.moonscript.com/icons/calendarIcon.jpg">, <img src="http://images.moonscript.com/icons/calendarPrev.gif">, and <img src="http://images.moonscript.com/icons/calendarNext.gif"> icon URL's</li>
+</ul>
+</body>
+</html>
