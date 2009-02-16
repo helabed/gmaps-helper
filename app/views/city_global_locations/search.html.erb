@@ -7,19 +7,19 @@
 		CountryCode.find(:all).collect {|o| [ o.name, o.code.downcase ] },
 		{ :include_blank => true } 
 		) 
-%>
+  %>
 	</p>
 	<p>
 	city<br />
 	<img id='auto_complete_spinner' src='/images/spinner.gif' style='display:none;' />
 	<%= text_field_with_auto_complete :city_global_location, 
-	:city, 
-	{},  
-	{ 
-		:method => :get,
-			:skip_style => true,
-			:indicator => 'auto_complete_spinner'
-	} 
+  	:city, 
+  	{},  
+  	{ 
+  		:method => :get,
+  		:skip_style => true,
+  		:indicator => 'auto_complete_spinner'
+  	} 
 	%>
 	</p>
 	<p>

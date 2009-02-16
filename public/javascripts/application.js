@@ -4,6 +4,7 @@
 var cityList = new Array();
 var cityId = 0;
 
+
 // ===================
 //  Event Functions
 // ===================
@@ -32,7 +33,7 @@ function deleteCity(e){
 function getCityBean(){
   var cityBean = new Object();
   
-  cityBean.city = document.getElementById("city").value;
+  cityBean.city = document.getElementById("city_global_location_city").value;
   cityBean.state = document.getElementById("state").value;
   cityBean.longitude = document.getElementById("longitude").value;
   cityBean.latitude = document.getElementById("latitude").value;
@@ -44,7 +45,7 @@ function getCityBean(){
 }
 
 function populateForm(cityBean){
-  document.getElementById("city").value = cityBean.accentedCity != null ? cityBean.accentedCity : cityBean.city;
+  document.getElementById("city_global_location_city").value = cityBean.accentedCity != null ? cityBean.accentedCity : cityBean.city;
   document.getElementById("state").value = cityBean.region;
   document.getElementById("longitude").value = cityBean.longitude;
   document.getElementById("latitude").value = cityBean.latitude;
@@ -92,6 +93,13 @@ function addToTable(cityBean){
   var tbl = document.getElementById("cityTable");
   var newRow = tbl.insertRow(tbl.rows.length);
   newRow.id = cityBean.id;
+  if( tbl.rows.length % 2 == 0)
+  {
+    newRow.setAttribute("class", "even");
+  }
+  else{
+    newRow.setAttribute("class", "odd");
+  }
   
   var deleteCell = newRow.insertCell(0);
   var deleteButton = document.createElement("input");
@@ -103,19 +111,24 @@ function addToTable(cityBean){
   
   var cityCell = newRow.insertCell(1);
   cityCell.appendChild(document.createTextNode(cityBean.city));
-  registerListener(cityCell, "mouseover", displayCityOnMap, false);
+  registerListener(cityCell, "mouseover", displayCityBlowUp, false);
   
   var stateCell = newRow.insertCell(2);
   stateCell.appendChild(document.createTextNode(cityBean.state));
   registerListener(stateCell, "mouseover", displayCityOnMap, false);
-  
-  var longitudeCell = newRow.insertCell(3);
-  longitudeCell.appendChild(document.createTextNode(cityBean.longitude));
-  registerListener(longitudeCell, "mouseover", displayCityOnMap, false);
-  
-  var latitudeCell = newRow.insertCell(4);
-  latitudeCell.appendChild(document.createTextNode(cityBean.latitude));
-  registerListener(latitudeCell, "mouseover", displayCityOnMap, false);
+
+  var countryCell = newRow.insertCell(3);
+  countryCell.appendChild(document.createTextNode(cityBean.country));
+  registerListener(countryCell, "mouseover", displayCountryBlowUp, false);
+
+//  
+//  var longitudeCell = newRow.insertCell(3);
+//  longitudeCell.appendChild(document.createTextNode(cityBean.longitude));
+//  registerListener(longitudeCell, "mouseover", displayCityOnMap, false);
+//  
+//  var latitudeCell = newRow.insertCell(4);
+//  latitudeCell.appendChild(document.createTextNode(cityBean.latitude));
+//  registerListener(latitudeCell, "mouseover", displayCityOnMap, false);
 }
 
 function deleteFromTable(rowId){
@@ -198,6 +211,23 @@ function displayCityOnMap(e){
   cityBean.marker.openInfoWindowHtml(description);
 }
 
+function displayCityBlowUp(e){
+  var tr = getParentRow(getEventTarget(e));
+  var cityId = tr.id;
+  var position = findById(cityId);
+  var cityBean = cityList[position];
+  
+  cityBean.marker.showMapBlowup(3, G_SATELLITE_MAP);
+}
+
+function displayCountryBlowUp(e){
+  var tr = getParentRow(getEventTarget(e));
+  var cityId = tr.id;
+  var position = findById(cityId);
+  var cityBean = cityList[position];
+  
+  cityBean.marker.showMapBlowup(6, G_SATELLITE_MAP);
+}
 
 
 function cyclePushpins(){

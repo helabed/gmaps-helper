@@ -129,16 +129,21 @@ tr.even {
 
 #tableSection{
   overflow-y:scroll; 
-  height:200px;
+  height:100px;
 }
 
 #tableSection > table {
   border: 1;
   width:  400px; 
-  height: 200px; 
+  height: 50px; 
 }
 
 #map {
   width: 700px; 
   height: 450px; 
+}
+
+#formSection > #cityForm > #city, #state, #country, #population, #longitude, #latitude {
+  size: 10; 
+  background: #f4f5cb;
 }
