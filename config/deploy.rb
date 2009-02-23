@@ -113,3 +113,15 @@ task :symlink_production_sqlite3, :roles => :app do
 end
 
 
+# REQUIRED Task to deal with ISSUES with SITE 5
+after "deploy:symlink", :deal_with_site5_issues
+desc "deal with SITE5 issues -- had to copy the new release as release_BUP, then rm original then copy it back as release. maybe some ownership issues."
+task :deal_with_site5_issues, :roles => :app do
+  run "cp -r  #{release_path} #{release_path}_BUP"
+  run "rm -rf #{release_path}"
+  run "cp -r  #{release_path}_BUP #{release_path}"
+  # now to cleanup, remove the *_BUP directory
+  run "rm -rf #{release_path}_BUP"
+end
+
+
