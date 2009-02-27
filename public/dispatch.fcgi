@@ -1,4 +1,8 @@
 #!/usr/bin/ruby
+
+# Uncomment below to force Rails into production mode when
+# you don't control web/app server and can't set it the proper way
+ENV['RAILS_ENV'] ||= 'production'
 #
 # You may specify the path to the FastCGI crash log (a log of unhandled
 # exceptions which forced the FastCGI instance to exit, great for debugging)

@@ -1,5 +1,9 @@
 #!/usr/bin/ruby
 
+# Uncomment below to force Rails into production mode when
+# you don't control web/app server and can't set it the proper way
+ENV['RAILS_ENV'] ||= 'production'
+
 require File.dirname(__FILE__) + "/../config/environment" unless defined?(RAILS_ROOT)
 
 # If you're using RubyGems and mod_ruby, this require should be changed to an absolute path one, like:
