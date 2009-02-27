@@ -7,6 +7,16 @@
 # Specifies gem version of Rails to use when vendor/rails is not present
 RAILS_GEM_VERSION = '2.1.1' unless defined? RAILS_GEM_VERSION
 
+# Specifies the production version of the google maps api key which is setup for http://rubywebworks.com
+GOOGLE_MAPS_API_KEY = 'ABQIAAAATJL7OHV_fwFFKPDFWt53ChQfeJeu0VDWhgU9x2vczpagCv-LBBQdtDFpDxE3DbT9xv75YCMq028USw'
+
+# The following was not needed and it was giving me a warning(??), but it looks like if you have a valid
+# production key, then google wouldn't complain about it being used in http://localhost
+#if ENV["RAILS_ENV"] != 'production'
+#  # Specifies the development/test version of the google maps api key which is setup for http://localhost
+#  GOOGLE_MAPS_API_KEY = 'ABQIAAAATJL7OHV_fwFFKPDFWt53ChT2yXp_ZAY8_ufC3CFXhHIE1NvwkxRp-K-fE-a41fLoOHyfZY85x2fgCA'
+#end
+
 # Bootstrap the Rails environment, frameworks, and default configuration
 require File.join(File.dirname(__FILE__), 'boot')
 

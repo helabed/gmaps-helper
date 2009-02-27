@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
-    <script src="http://maps.google.com/maps?file=api&v=2&key=ABQIAAAATJL7OHV_fwFFKPDFWt53ChT2yXp_ZAY8_ufC3CFXhHIE1NvwkxRp-K-fE-a41fLoOHyfZY85x2fgCA" type="text/javascript">
+    <script src="http://maps.google.com/maps?file=api&v=2&key=<%=GOOGLE_MAPS_API_KEY%>" type="text/javascript">
     </script>
     <title>Gmaps Helper</title>
     <meta http-equiv="content-type" content="application/xhtml+xml; charset=iso-8859-1" />
@@ -16,7 +16,7 @@
   </head>
   <body>
     <div id="content">
-	    <div class="slogan">we make gmaps easier and more global</div>
+	    <div class="slogan">we make gmaps easier and more global -- env=<%= ENV["RAILS_ENV"] %></div>
 			<div class="titlebar">Welcome to Gmaps-Helper</div>
       <div class="sidebar">
         <a href="/map/locate_city_on_map">Home</a>
