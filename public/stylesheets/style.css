@@ -111,13 +111,13 @@ tr.even {
 
 #us-state-codes{
   overflow-y: scroll; 
-  height:600px; 
+  height:400px; 
   width:300px
 }
 
 #country-codes{
   overflow-y: scroll; 
-  height:600px; 
+  height:400px; 
   width:300px
 }
 
@@ -140,7 +140,7 @@ tr.even {
 
 #map {
   width: 700px; 
-  height: 450px; 
+  height: 350px; 
 }
 
 #formSection > #cityForm > #city, #state, #country, #population, #longitude, #latitude {

@@ -51,11 +51,11 @@ class MapController < ApplicationController
     super
   end
   
-  def hello
+  def city_maps
   
   end
   
-  def goodbye
+  def polylines_and_events
 
   end
 
