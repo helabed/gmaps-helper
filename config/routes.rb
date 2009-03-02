@@ -1,9 +1,15 @@
 ActionController::Routing::Routes.draw do |map|
+# Straight 'http://my.app/blog/' displays the index
+
+  map.connect "/index.html" ,
+            :controller => "map" ,
+            :action => "locate_city_on_map"
+
   map.resources :us_state_codes
 
   map.resources :country_codes
 
-    # added these here to bypass the RESTful system that was driving me crazy.
+  # added these here to bypass the RESTful system that was driving me crazy.
   map.connect 'city_global_locations/search', :controller => 'city_global_locations', :action => 'search'
   map.connect 'city_global_locations/search_for', :controller => 'city_global_locations', :action => 'search_for'
   map.resources :city_global_locations, :collection => {:auto_complete_for_city_global_location_city => :get}
@@ -40,7 +46,7 @@ ActionController::Routing::Routes.draw do |map|
   #   end
 
   # You can have the root of your site routed with map.root -- just remember to delete public/index.html.
-  # map.root :controller => "welcome"
+  map.root :controller => 'map', :action => 'locate_city_on_map'
 
   # See how all your routes lay out with "rake routes"
 
