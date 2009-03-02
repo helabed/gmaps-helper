@@ -147,3 +147,14 @@ tr.even {
   size: 10; 
   background: #f4f5cb;
 }
+
+form label {
+  float: left;
+  width: 70px;
+}
+
+input.txt {
+  border: 1px inset #00008B;
+  width: 180px;
+}
+

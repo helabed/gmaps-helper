@@ -1,43 +1,48 @@
-<h1>Place Cities on the Map</h1>
-
 <table>
   <tr>
     <td>
-	    <div id="formSection">
-	      <form id="cityForm">
-	        City: 
+      <div id="formSection">
+        <fieldset>
+          <legend>City Info</legend>
+          <form id="cityForm">
+            City: 
 
-        	<img id='auto_complete_spinner' src='/images/spinner.gif' style='display:none;' />
-        	<%= text_field_with_auto_complete :city_global_location, 
-        	:city,  
-        	{
-					},  
-        	{ 
-        		:method => :get,
-        		:skip_style => true,
-        		:indicator => 'auto_complete_spinner',
-			:url => {:controller => 'city_global_locations', :action => 'auto_complete_for_city_global_location_city'}
-        	} 
-        	%>
-          <input type="button" name="lookupCoordForACity" value="Find a City" id="lookupCoordForACityButton"/>
-          <input type="button" name="AddCity" value="Add City" id="addCityButton"/>
-	        <br/>
-	        Region/State: <input type="text" name="state" id="state" size="10">
-	        <br/>
-	        Country: <input type="text" name="country" id="country" size="10">
-	        <br/>
-	        Population: <input type="text" name="population" id="population" size="10">
-	        <br/>
-	        Longitude: <input type="text" name="longitude" id="longitude" size="10">
-	        <br/>
-	        Latitude: <input type="text" name="latitude" id="latitude" size="10">
-	        <br/>
-	      </form>
-	    </div>
+            <img id='auto_complete_spinner' src='/images/spinner.gif' style='display:none;' />
+            <%= text_field_with_auto_complete :city_global_location, 
+              :city,  
+              { },  
+              { 
+                :method => :get,
+                :skip_style => true,
+                :indicator => 'auto_complete_spinner',
+                :url => {:controller => 'city_global_locations', :action => 'auto_complete_for_city_global_location_city'}
+              } 
+            %>
+            <input type="button" name="lookupCoordForACity" value="Find a City" id="lookupCoordForACityButton"/>
+            <input type="button" name="AddCity" value="Add City" id="addCityButton"/>
+            <br />
+            <label for="state">Region/State:</label>
+            <input type="text" name="state" id="state" class="txt"  accesskey="p" />
+            <br />
+            <label for="country">Country:</label>
+            <input type="text" name="country" id="country" class="txt"  />
+            <br />
+            <label for="population">Population:</label>
+            <input type="text" name="population" id="population" class="txt"  />
+            <br />
+            <label for="longitude">Longitude:</label>
+            <input type="text" name="longitude" id="longitude" class="txt"  />
+            <br />
+            <label for="latitude">Latitude:</label>
+            <input type="text" name="latitude" id="latitude" class="txt"  />
+          </form>
+        </fieldset>
+      </div>
+
     </td>
     <td>
       <div id="tableSection">
-				<table>
+        <table>
           <tr id="cityHeader">
             <td>
               Delete
