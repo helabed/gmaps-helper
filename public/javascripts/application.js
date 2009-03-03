@@ -481,3 +481,8 @@ String.prototype.trim =
     return this.replace(/^\s+|\s+$/g,"");
   }
 
+
+  function setfocus(a_field_id) {
+    $(a_field_id).focus()
+  }
+
