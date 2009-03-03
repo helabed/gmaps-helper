@@ -60,7 +60,6 @@ a:hover {
 }
 
 .footer a:link {
-  color: #e3e3e3;
   font-size: inherit;
 }
 
@@ -72,12 +71,12 @@ a:hover {
   text-transform: capitalize;
 	float: right;
 	display:inline;
-	color: f20909;
+	color: #f20909;
 } 
 
 
 .text p.content {
-  color: #e3e3e3;
+  color: #000000;
   font-size: inherit;
 } 
 
