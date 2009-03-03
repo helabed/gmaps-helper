@@ -18,7 +18,20 @@
   	{ 
   		:method => :get,
   		:skip_style => true,
-  		:indicator => 'auto_complete_spinner'
+  		:indicator => 'auto_complete_spinner',
+      :frequency => 1.0,
+      :minchars => 1,
+      :after_update_element => 
+              "function (ele, value) {
+                var state_searchable_field   = Ajax.Autocompleter.extract_value( value, 'STATE').trim();
+                var country_searchable_field = Ajax.Autocompleter.extract_value( value, 'COUNTRY').trim();
+                var city_searchable_field    = Ajax.Autocompleter.extract_value( value, 'CITY').trim();
+                $('city_global_location_city').value = city_searchable_field;
+                var state_code = Ajax.Autocompleter.extract_value( value, 'STATE_CODE').trim();
+                var country_code = Ajax.Autocompleter.extract_value( value, 'COUNTRY_CODE').trim();
+
+                $('city_global_location_country').value = country_code;
+                                      } "
   	} 
 	%>
 	</p>

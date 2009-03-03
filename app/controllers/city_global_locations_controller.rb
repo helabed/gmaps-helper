@@ -1,6 +1,6 @@
 class CityGlobalLocationsController < ApplicationController
   
-  auto_complete_for :city_global_location, :city, :limit => 10
+  auto_complete_for :city_global_location, :city
   
   
   # GET /city_global_locations

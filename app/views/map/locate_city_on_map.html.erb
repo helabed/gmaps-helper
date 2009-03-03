@@ -15,7 +15,22 @@
                 :method => :get,
                 :skip_style => true,
                 :indicator => 'auto_complete_spinner',
-                :url => {:controller => 'city_global_locations', :action => 'auto_complete_for_city_global_location_city'}
+                :frequency => 1.0,
+                :minchars => 1,
+                :url => {:controller => 'city_global_locations', :action => 'auto_complete_for_city_global_location_city'},
+                :after_update_element => 
+                        "function (ele, value) {
+                          $('state').value = Ajax.Autocompleter.extract_value( value, 'STATE').trim();
+                          $('country').value = Ajax.Autocompleter.extract_value( value, 'COUNTRY').trim();
+                          var city_searchable_field = Ajax.Autocompleter.extract_value( value, 'CITY').trim();
+                          $('city_global_location_city').value = city_searchable_field;
+                          var state_code = Ajax.Autocompleter.extract_value( value, 'STATE_CODE').trim();
+                          var country_code = Ajax.Autocompleter.extract_value( value, 'COUNTRY_CODE').trim();
+                          city_searchable_field = ( country_code == 'us' ) ? city_searchable_field+','+state_code+','+country_code
+                                                                           : city_searchable_field+','+country_code;
+
+                          $('city_global_location_city').value = city_searchable_field;
+                                                } "
               } 
             %>
             <input type="button" name="lookupCoordForACity" value="Find a City" id="lookupCoordForACityButton"/>

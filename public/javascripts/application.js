@@ -454,3 +454,30 @@ function lookupCityShortcut(){
   });
   request.send(null);
 }
+
+
+Ajax.Autocompleter.extract_value = 
+  function (value, className) {
+    var result;
+    //console.log('value= '+value)
+    //console.log('className= '+className)
+
+    var elements = value.getElementsByClassName(className, value);
+    //console.log('elements= '+elements)
+    //console.log('length= '+elements.length)
+
+    //alert('elements: '+elements[0].innerHTML.unescapeHTML())
+
+    if (elements && elements.length == 1) {
+      result = elements[0].innerHTML.unescapeHTML();
+      //console.log('result= '+result)
+    }
+
+    return result;
+  };
+
+String.prototype.trim = 
+  function() {
+    return this.replace(/^\s+|\s+$/g,"");
+  }
+

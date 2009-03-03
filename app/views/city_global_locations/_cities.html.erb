@@ -1,5 +1,21 @@
 <ul class="cities">
 <% for city in @cities do -%>
-  <li class="city"><div class="city"><%=h city.city %></div><div class="country"><span class="informal"><%= CountryCode.find_country( city ) %> - <%=h city.country %> - <%= UsStateCode.find_state( city ) if city.country == 'us' %></span></div></li>
+  <li class="city"><div class="city"><%=h city.city %></div><div class="country"><span class="informal"><%= CountryCode.find_country( city )  %> - <%=h city.country %> - <%= UsStateCode.find_state( city ) if (city.country == 'us')  %></span></div>
+    <div class="CITY" style="display: none;">
+      <%= h( city.city  ) %>
+    </div>
+    <div class="STATE" style="display: none;">
+      <%=  UsStateCode.find_state( city ) if ( city.country == 'us')  %>
+    </div>
+    <div class="STATE_CODE" style="display: none;">
+      <%=h   city.region  %>
+    </div>
+    <div class="COUNTRY" style="display: none;">
+      <%= h( CountryCode.find_country( city )  ) %>
+    </div>
+    <div class="COUNTRY_CODE" style="display: none;">
+      <%= h(  city.country  ) %>
+    </div>
+  </li>
 <% end -%>
 </ul>
