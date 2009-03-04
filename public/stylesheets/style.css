@@ -149,11 +149,11 @@ tr.even {
 
 form label {
   float: left;
-  width: 70px;
+  width: 80px;
 }
 
 input.txt {
   border: 1px inset #00008B;
-  width: 180px;
+  width: 120px;
 }
 

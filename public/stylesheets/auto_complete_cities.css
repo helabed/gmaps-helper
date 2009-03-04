@@ -6,6 +6,8 @@ div.auto_complete {
   margin:0px;
   padding:0px;
   z-index: 999;
+  overflow-y:scroll; 
+  height:400px;
 }
 
 ul.cities  {

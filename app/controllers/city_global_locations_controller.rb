@@ -144,7 +144,7 @@ class CityGlobalLocationsController < ApplicationController
 
     @cities = CityGlobalLocation.find(:all, 
       :conditions => condition, 
-      :limit => 10)
+      :limit => 100)
     render :partial => 'cities'
   end
 
