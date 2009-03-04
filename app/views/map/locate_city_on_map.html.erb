@@ -13,8 +13,7 @@
         <fieldset>
           <legend>City Info</legend>
           <form id="cityForm">
-            City: (examples: 'rome,it' or 'madison,wi,us')
-
+            City: (examples: 'rome,it' or 'madison,wi,us')<br />
             <img id='auto_complete_spinner' src='/images/spinner.gif' style='display:none;' />
             <%= text_field_with_auto_complete :city_global_location, 
               :city,  
@@ -41,6 +40,7 @@
                                                 } "
               } 
             %>
+            <br />
             <input type="button" name="lookupCoordForACity" value="Find a City" id="lookupCoordForACityButton"/>
             <input type="button" name="AddCity" value="Add City" id="addCityButton"/>
             <br />
@@ -61,7 +61,6 @@
           </form>
         </fieldset>
       </div>
-
     </td>
     <td>
       <div id="tableSection"> (hover mouse on top of table cells to see info. after adding a city) 
